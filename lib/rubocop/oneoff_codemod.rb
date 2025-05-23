@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rubocop'
+require "rubocop"
 
 require_relative "oneoff_codemod/version"
 

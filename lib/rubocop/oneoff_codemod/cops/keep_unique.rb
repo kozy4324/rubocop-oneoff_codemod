@@ -8,7 +8,7 @@ module RuboCop
         extend AutoCorrector
         include IgnoredNode
 
-        MSG = 'keep-unique'
+        MSG = "keep-unique"
 
         def initialize(*args)
           super
@@ -17,12 +17,12 @@ module RuboCop
 
         def on_new_investigation
           processed_source.comments.each do |comment|
-            if comment.text =~ /@keep-unique/
-              @commands[comment.location.line] = :keep_unique
+            next unless comment.text =~ /@keep-unique/
 
-              add_offense(comment.location.expression) do |corrector|
-                corrector.replace(comment.location.expression, "#")
-              end
+            @commands[comment.location.line] = :keep_unique
+
+            add_offense(comment.location.expression) do |corrector|
+              corrector.replace(comment.location.expression, "#")
             end
           end
         end
@@ -36,7 +36,7 @@ module RuboCop
               elements = node.values
               values = elements.map(&:source)
               uniq_values = values.uniq
-              corrector.replace(node, "[#{uniq_values.join(', ')}]")
+              corrector.replace(node, "[#{uniq_values.join(", ")}]")
             end
           end
 
