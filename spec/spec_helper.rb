@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rubocop/oneoff_codemod"
+require "rubocop/rspec/support"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
