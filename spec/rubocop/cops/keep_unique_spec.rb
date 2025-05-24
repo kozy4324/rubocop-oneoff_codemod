@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Codemod::Command, :config do # rubocop:disable Metrics/BlockLength
+RSpec.describe RuboCop::Cop::Codemod::KeepUnique, :config do # rubocop:disable Metrics/BlockLength
   it "registers an offense when put `@keep-unique` comment with ArrayNode" do
     expect_offense(<<~RUBY)
       # @keep-unique

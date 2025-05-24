@@ -3,8 +3,8 @@
 module RuboCop
   module Cop
     module Codemod
-      # Command
-      class Command < Base
+      # KeepUnique
+      class KeepUnique < Base
         extend AutoCorrector
         include IgnoredNode
 
