@@ -17,7 +17,7 @@ module RuboCop
 
         def on_new_investigation
           processed_source.comments.each do |comment|
-            next unless comment.text =~ /@keep-unique/
+            next unless comment.text == "# @keep-unique"
 
             @commands[comment.location.line] = :keep_unique
 
@@ -28,7 +28,6 @@ module RuboCop
         end
 
         def on_array(node)
-          # Parser::AST::Node.location.line で行番号が取れる
           if @commands[node.location.line - 1] == :keep_unique
             add_offense(node) do |corrector|
               next if part_of_ignored_node?(node)
