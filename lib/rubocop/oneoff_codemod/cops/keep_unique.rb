@@ -28,18 +28,18 @@ module RuboCop
         end
 
         def on_array(node) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-          if @commands[node.location.line - 1] == :keep_unique
-            add_offense(node) do |corrector|
-              next if part_of_ignored_node?(node)
+          return unless @commands[node.location.line - 1] == :keep_unique
 
-              elements = node.values
-              values = elements.map(&:source)
-              uniq_values = values.uniq
-              if node.loc.begin.source == "["
-                corrector.replace(node, "[#{uniq_values.join(", ")}]")
-              elsif node.loc.begin.source.start_with? "%w"
-                corrector.replace(node, node.loc.begin.source + uniq_values.join(" ") + node.loc.end.source)
-              end
+          add_offense(node) do |corrector|
+            next if part_of_ignored_node?(node)
+
+            elements = node.values
+            values = elements.map(&:source)
+            uniq_values = values.uniq
+            if node.loc.begin.source == "["
+              corrector.replace(node, "[#{uniq_values.join(", ")}]")
+            elsif node.loc.begin.source.start_with? "%w"
+              corrector.replace(node, node.loc.begin.source + uniq_values.join(" ") + node.loc.end.source)
             end
           end
 
