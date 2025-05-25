@@ -33,9 +33,7 @@ module RuboCop
           add_offense(node) do |corrector|
             next if part_of_ignored_node?(node)
 
-            elements = node.values
-            values = elements.map(&:source)
-            uniq_values = values.uniq
+            uniq_values = node.values.map(&:source).uniq
             if node.loc.begin.source == "["
               corrector.replace(node, "[#{uniq_values.join(", ")}]")
             elsif node.loc.begin.source.start_with? "%w"
