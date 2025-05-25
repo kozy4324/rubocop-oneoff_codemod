@@ -27,7 +27,7 @@ module RuboCop
           end
         end
 
-        def on_array(node) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
+        def on_array(node)
           return unless @commands[node.location.line - 1] == :keep_unique
           return unless node.loc.begin.source == "[" || node.loc.begin.source.start_with?("%w")
 
