@@ -47,16 +47,12 @@ module RuboCop
             content << node.loc.begin.source
             content << processed_source.raw_source[node.loc.begin.end_pos..(node.values.first.loc.expression.begin_pos - 1)] # rubocop:disable Layout/LineLength
 
-            current_line = node.values.first.loc.line
-            acc = node.values.uniq(&:source).inject([[]]) do |acc, v_node| # rubocop:disable Style/EachWithObject
-              if current_line != v_node.loc.line
-                current_line = v_node.loc.line
-                acc << []
-              end
-              acc.last << v_node.source
+            acc = node.values.uniq(&:source).inject([]) do |acc, v_node| # rubocop:disable Style/EachWithObject
+              acc << [] if acc.last&.last&.loc&.line != v_node.loc.line # rubocop:disable Style/SafeNavigationChainLength
+              acc.last << v_node
               acc
             end
-            content << acc.map { |a| a.join(separator) }.join(line_separator)
+            content << acc.map { |a| a.map(&:source).join(separator) }.join(line_separator)
 
             content << processed_source.raw_source[node.values.last.loc.expression.end_pos..(node.loc.end.begin_pos - 1)] # rubocop:disable Layout/LineLength
             content << node.loc.end.source
