@@ -33,5 +33,8 @@ Gem::Specification.new do |spec| # rubocop:disable Gemspec/RequireMFA
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "rubocop"
+  spec.add_dependency "lint_roller", "~> 1.1"
+  spec.add_dependency "rubocop", ">= 1.72.1", "< 2.0"
+
+  spec.metadata["default_lint_roller_plugin"] = "RuboCop::OneoffCodemod::Plugin"
 end
