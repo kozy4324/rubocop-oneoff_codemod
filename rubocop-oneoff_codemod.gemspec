@@ -4,7 +4,7 @@ require_relative "lib/rubocop/oneoff_codemod/version"
 
 Gem::Specification.new do |spec| # rubocop:disable Gemspec/RequireMFA
   spec.name = "rubocop-oneoff_codemod"
-  spec.version = Rubocop::OneoffCodemod::VERSION
+  spec.version = RuboCop::OneoffCodemod::VERSION
   spec.authors = ["Koji NAKAMURA"]
   spec.email = ["kozy4324@gmail.com"]
 
