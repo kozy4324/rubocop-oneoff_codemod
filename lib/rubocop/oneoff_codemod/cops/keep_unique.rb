@@ -8,7 +8,7 @@ module RuboCop
         extend AutoCorrector
         include IgnoredNode
 
-        MSG = "keep-unique"
+        MSG = "Keep array items unique, removing duplicates."
         COMMAND = "keep-unique"
 
         def initialize(*args)
