@@ -2,6 +2,6 @@
 
 RSpec.describe RuboCop::OneoffCodemod do
   it "has a version number" do
-    expect(RuboCop::OneoffCodemod::VERSION).to be "0.0.4"
+    expect(RuboCop::OneoffCodemod::VERSION).to be "0.0.5"
   end
 end
