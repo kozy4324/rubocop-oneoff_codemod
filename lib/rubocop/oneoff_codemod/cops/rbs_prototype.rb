@@ -19,12 +19,15 @@ module RuboCop
         end
 
         def find_node_on_line(node, target_line)
-          if node.loc&.line == target_line && node.is_a?(RuboCop::AST::DefNode)
+          if node.is_a?(RuboCop::AST::DefNode) && node.loc&.line == target_line
             node
           else
-            node.child_nodes.find do |child_node|
-              find_node_on_line child_node, target_line
+            finded = nil
+            node.child_nodes.each do |child_node|
+              finded = find_node_on_line child_node, target_line
+              break if finded
             end
+            finded
           end
         end
 
@@ -33,6 +36,8 @@ module RuboCop
             next unless comment.text == "# @#{COMMAND}"
 
             target_node = find_node_on_line(processed_source.ast, comment.location.line + 1)
+            next if target_node.nil?
+
             target_method = target_node.method_name
 
             add_offense(comment.location.expression) do |corrector|
