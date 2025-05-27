@@ -9,6 +9,7 @@ module RuboCop
         include IgnoredNode
 
         MSG = "keep-unique"
+        COMMAND = "keep-unique"
 
         def initialize(*args)
           super
@@ -17,9 +18,9 @@ module RuboCop
 
         def on_new_investigation
           processed_source.comments.each do |comment|
-            next unless comment.text == "# @keep-unique"
+            next unless comment.text == "# @#{COMMAND}"
 
-            @commands[comment.location.line] = :keep_unique
+            @commands[comment.location.line] = COMMAND
 
             add_offense(comment.location.expression) do |corrector|
               corrector.replace(comment.location.expression, "#")
@@ -27,8 +28,12 @@ module RuboCop
           end
         end
 
+        def command_exists?(node)
+          @commands[node.location.line - 1] == COMMAND
+        end
+
         def on_array(node)
-          return unless @commands[node.location.line - 1] == :keep_unique
+          return unless command_exists? node
           return unless node.loc.begin.source == "[" || node.loc.begin.source.start_with?("%w")
 
           add_offense(node) do |corrector|
