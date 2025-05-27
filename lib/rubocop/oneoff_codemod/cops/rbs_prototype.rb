@@ -50,7 +50,7 @@ module RuboCop
                 end
               end
 
-              corrector.replace(comment.location.expression, "# #{string.join}")
+              corrector.replace(comment.location.expression, "#: #{string.join}")
             end
           end
         end

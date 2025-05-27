@@ -14,7 +14,7 @@ RSpec.describe RuboCop::Cop::Codemod::RbsPrototype, :config do
 
     expect_correction(<<~RUBY)
       class Foo
-        # (untyped a, untyped b) -> untyped
+        #: (untyped a, untyped b) -> untyped
         def hoge(a, b)
           a + b
         end
