@@ -1,9 +1,0 @@
----
-name: parser
-version: '3.2'
-source:
-  type: git
-  name: ruby/gem_rbs_collection
-  revision: 52a7ef8a9328fb2413e3b42dd8ee37deb703a940
-  remote: https://github.com/ruby/gem_rbs_collection.git
-  repo_dir: gems
