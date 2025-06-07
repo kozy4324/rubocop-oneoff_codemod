@@ -1,0 +1,24 @@
+module RuboCop
+  module Cop
+    module Codemod
+      # KeepUnique
+      class KeepUnique < Base
+        @commands: untyped
+
+        extend AutoCorrector
+
+        MSG: "Keep array items unique, removing duplicates."
+
+        COMMAND: "keep-unique"
+
+        def initialize: (*untyped args) -> void
+
+        def on_new_investigation: () -> untyped
+
+        def command_exists?: (untyped node) -> untyped
+
+        def on_array: (untyped node) -> (nil | untyped)
+      end
+    end
+  end
+end

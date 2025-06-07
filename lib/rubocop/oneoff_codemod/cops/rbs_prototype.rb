@@ -2,6 +2,7 @@
 
 require "rbs"
 
+# steep:ignore:start
 module RuboCop
   module Cop
     module Codemod
@@ -58,3 +59,4 @@ module RuboCop
     end
   end
 end
+# steep:ignore:end

@@ -1,0 +1,12 @@
+module RuboCop
+  module OneoffCodemod
+    # A plugin that integrates RuboCop Oneoff Codemod with RuboCop's plugin system.
+    class Plugin
+      def about: () -> untyped
+
+      def supported?: (untyped context) -> untyped
+
+      def rules: (untyped _context) -> untyped
+    end
+  end
+end

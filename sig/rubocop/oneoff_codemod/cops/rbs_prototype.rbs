@@ -1,0 +1,22 @@
+module RuboCop
+  module Cop
+    module Codemod
+      # KeepUnique
+      class RbsPrototype < Base
+        @commands: untyped
+
+        extend AutoCorrector
+
+        MSG: "Run rbs prototype and generates boilerplate signature declaration."
+
+        COMMAND: "rbs-prototype"
+
+        def initialize: (*untyped args) -> void
+
+        def find_node_on_line: (untyped node, untyped target_line) -> untyped
+
+        def on_new_investigation: () -> untyped
+      end
+    end
+  end
+end

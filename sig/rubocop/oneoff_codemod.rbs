@@ -1,6 +1,12 @@
-module RuboCop
-  module OneoffCodemod
-    VERSION: String
-    # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+module LintRoller
+  module Plugin
+  end
+
+  class About
+    def initialize: (untyped) -> void
+  end
+
+  class Rules
+    def initialize: (untyped) -> void
   end
 end
