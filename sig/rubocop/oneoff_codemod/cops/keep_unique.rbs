@@ -3,9 +3,10 @@ module RuboCop
     module Codemod
       # KeepUnique
       class KeepUnique < Base
-        @commands: untyped
-
         extend AutoCorrector
+        include IgnoredNode
+
+        @commands: Hash[Integer, String]
 
         MSG: "Keep array items unique, removing duplicates."
 
