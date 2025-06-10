@@ -23,12 +23,12 @@ module RuboCop
           if node.is_a?(RuboCop::AST::DefNode) && node.loc&.line == target_line
             node
           else
-            finded = nil
+            found = nil
             node.child_nodes.each do |child_node|
-              finded = find_node_on_line child_node, target_line
-              break if finded
+              found = find_node_on_line child_node, target_line
+              break if found
             end
-            finded
+            found
           end
         end
 
