@@ -7,15 +7,15 @@ module RuboCop
 
         extend AutoCorrector
 
-        MSG: "Run rbs prototype and generates boilerplate signature declaration."
+        MSG: String
 
-        COMMAND: "rbs-prototype"
+        COMMAND: String
 
         def initialize: (*untyped args) -> void
 
-        def find_node_on_line: (untyped node, untyped target_line) -> untyped
+        def find_node_on_line: (RuboCop::AST::Node? node, Integer target_line) -> (RuboCop::AST::Node | nil)
 
-        def on_new_investigation: () -> untyped
+        def on_new_investigation: () -> void
       end
     end
   end

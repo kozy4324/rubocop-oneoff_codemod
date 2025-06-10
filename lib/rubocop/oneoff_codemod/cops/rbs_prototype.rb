@@ -2,7 +2,6 @@
 
 require "rbs"
 
-# steep:ignore:start
 module RuboCop
   module Cop
     module Codemod
@@ -20,11 +19,13 @@ module RuboCop
         end
 
         def find_node_on_line(node, target_line)
-          if node.is_a?(RuboCop::AST::DefNode) && node.loc&.line == target_line
+          return if node.nil?
+
+          if node.is_a?(RuboCop::AST::DefNode) && node.loc&.line == target_line # steep:ignore
             node
           else
             found = nil
-            node.child_nodes.each do |child_node|
+            node.child_nodes.each do |child_node| # steep:ignore
               found = find_node_on_line child_node, target_line
               break if found
             end
@@ -34,24 +35,24 @@ module RuboCop
 
         def on_new_investigation
           processed_source.comments.each do |comment|
-            next unless comment.text == "# @#{COMMAND}"
+            next unless comment.text == "# @#{COMMAND}" # steep:ignore
 
-            target_node = find_node_on_line(processed_source.ast, comment.location.line + 1)
+            target_node = find_node_on_line(processed_source.ast, comment.location.line + 1) # steep:ignore
             next if target_node.nil?
 
-            target_method = target_node.method_name
+            target_method = target_node.method_name # steep:ignore
 
-            add_offense(comment.location.expression) do |corrector|
+            add_offense(comment.location.expression) do |corrector| # steep:ignore
               parser = RBS::Prototype::RB.new
               parser.parse processed_source.raw_source
               string = []
               parser.decls.each do |decl|
-                decl.members.each do |member|
+                decl.members.each do |member| # steep:ignore
                   string << member.overloads.map(&:method_type).join(" | ") if target_method == member.name
                 end
               end
 
-              corrector.replace(comment.location.expression, "#: #{string.join}")
+              corrector.replace(comment.location.expression, "#: #{string.join}") # steep:ignore
             end
           end
         end
@@ -59,4 +60,3 @@ module RuboCop
     end
   end
 end
-# steep:ignore:end
