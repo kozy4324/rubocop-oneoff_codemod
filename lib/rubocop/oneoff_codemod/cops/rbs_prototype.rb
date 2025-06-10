@@ -45,7 +45,7 @@ module RuboCop
             add_offense(comment.location.expression) do |corrector| # steep:ignore
               parser = RBS::Prototype::RB.new
               parser.parse processed_source.raw_source
-              string = []
+              string = Array.new(0, "")
               parser.decls.each do |decl|
                 decl.members.each do |member| # steep:ignore
                   string << member.overloads.map(&:method_type).join(" | ") if target_method == member.name
