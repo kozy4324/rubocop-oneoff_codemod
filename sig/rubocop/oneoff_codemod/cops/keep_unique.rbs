@@ -14,11 +14,11 @@ module RuboCop
 
         def initialize: (*untyped args) -> void
 
-        def on_new_investigation: () -> untyped
+        def on_new_investigation: () -> void
 
-        def command_exists?: (untyped node) -> untyped
+        def command_exists?: (RuboCop::AST::Node node) -> bool
 
-        def on_array: (untyped node) -> (nil | untyped)
+        def on_array: (RuboCop::AST::Node node) -> (nil | untyped)
       end
     end
   end
