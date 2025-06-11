@@ -18,7 +18,7 @@ module RuboCop
 
         def command_exists?: (RuboCop::AST::Node node) -> bool
 
-        def on_array: (RuboCop::AST::Node node) -> (nil | untyped)
+        def on_array: (RuboCop::AST::ArrayNode node) -> void
       end
     end
   end
