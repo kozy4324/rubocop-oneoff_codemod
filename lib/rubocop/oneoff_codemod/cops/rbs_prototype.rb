@@ -21,38 +21,40 @@ module RuboCop
         def find_node_on_line(node, target_line)
           return if node.nil?
 
-          if node.is_a?(RuboCop::AST::DefNode) && node.loc&.line == target_line # steep:ignore
+          if node.is_a?(AST::DefNode) && node.loc&.line == target_line
             node
           else
-            found = nil
-            node.child_nodes.each do |child_node| # steep:ignore
-              found = find_node_on_line child_node, target_line
-              break if found
+            found = node.child_nodes.find do |child_node|
+              find_node_on_line child_node, target_line
             end
-            found
+            found.is_a?(AST::DefNode) ? found : nil
           end
         end
 
         def on_new_investigation
           processed_source.comments.each do |comment|
-            next unless comment.text == "# @#{COMMAND}" # steep:ignore
+            next unless comment.text == "# @#{COMMAND}"
 
-            target_node = find_node_on_line(processed_source.ast, comment.location.line + 1) # steep:ignore
+            target_node = find_node_on_line(processed_source.ast, comment.location.line + 1)
             next if target_node.nil?
 
-            target_method = target_node.method_name # steep:ignore
+            target_method = target_node.method_name
 
-            add_offense(comment.location.expression) do |corrector| # steep:ignore
+            add_offense(comment.location.expression) do |corrector|
               parser = RBS::Prototype::RB.new
               parser.parse processed_source.raw_source
               string = Array.new(0, "")
               parser.decls.each do |decl|
-                decl.members.each do |member| # steep:ignore
+                next unless decl.is_a? RBS::AST::Declarations::Class
+
+                decl.members.each do |member|
+                  next unless member.is_a? RBS::AST::Members::MethodDefinition
+
                   string << member.overloads.map(&:method_type).join(" | ") if target_method == member.name
                 end
               end
 
-              corrector.replace(comment.location.expression, "#: #{string.join}") # steep:ignore
+              corrector.replace(comment.location.expression, "#: #{string.join}")
             end
           end
         end

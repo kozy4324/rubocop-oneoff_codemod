@@ -13,7 +13,7 @@ module RuboCop
 
         def initialize: (*untyped args) -> void
 
-        def find_node_on_line: (RuboCop::AST::Node? node, Integer target_line) -> (RuboCop::AST::Node | nil)
+        def find_node_on_line: (RuboCop::AST::Node? node, Integer target_line) -> (RuboCop::AST::DefNode | nil)
 
         def on_new_investigation: () -> void
       end
