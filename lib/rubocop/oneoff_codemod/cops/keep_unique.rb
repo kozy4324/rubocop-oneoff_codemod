@@ -48,7 +48,8 @@ module RuboCop
               line_separator = "\n#{indent}"
             end
 
-            content = Array.new(0, "")
+            # @type var content: Array[String]
+            content = []
             # steep:ignore:start
             content << node.loc.begin.source
             begin_to_first_value = processed_source.raw_source[node.loc.begin.end_pos..(node.values.first.loc.expression.begin_pos - 1)] # rubocop:disable Layout/LineLength

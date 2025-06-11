@@ -43,7 +43,8 @@ module RuboCop
             add_offense(comment.location.expression) do |corrector|
               parser = RBS::Prototype::RB.new
               parser.parse processed_source.raw_source
-              string = Array.new(0, "")
+              # @type var string: Array[String]
+              string = []
               parser.decls.each do |decl|
                 next unless decl.is_a? RBS::AST::Declarations::Class
 
