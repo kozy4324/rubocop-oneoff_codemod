@@ -36,7 +36,7 @@ module RuboCop
           return unless command_exists? node
           return unless node.loc.expression.source.start_with?("[") || node.loc.expression.source.start_with?("%w")
 
-          add_offense(node) do |corrector|
+          add_offense(node) do |corrector| # rubocop:disable Metrics/BlockLength
             next if part_of_ignored_node?(node)
 
             indent = " " * node.children.first.loc.column
@@ -48,12 +48,12 @@ module RuboCop
               line_separator = "\n#{indent}"
             end
 
+            node_loc = node.loc #: Parser::Source::Map::Collection
+
             # @type var content: Array[String]
             content = []
-            # steep:ignore:start
-            content << node.loc.begin.source
-            begin_to_first_value = processed_source.raw_source[node.loc.begin.end_pos..(node.values.first.loc.expression.begin_pos - 1)] # rubocop:disable Layout/LineLength
-            # steep:ignore:end
+            content << node_loc.begin.source
+            begin_to_first_value = processed_source.raw_source[node_loc.begin.end_pos..(node.values.first.loc.expression.begin_pos - 1)] # rubocop:disable Layout/LineLength
             content << begin_to_first_value unless begin_to_first_value.nil?
 
             acc = node.values.uniq(&:source).each_with_object([]) do |v_node, acc|
@@ -65,11 +65,9 @@ module RuboCop
             end
             content << acc.map { |a| a.map(&:source).join(separator) }.join(line_separator)
 
-            # steep:ignore:start
-            last_value_to_end = processed_source.raw_source[node.values.last.loc.expression.end_pos..(node.loc.end.begin_pos - 1)] # rubocop:disable Layout/LineLength
+            last_value_to_end = processed_source.raw_source[node.values.last.loc.expression.end_pos..(node_loc.end.begin_pos - 1)] # rubocop:disable Layout/LineLength
             content << last_value_to_end unless last_value_to_end.nil?
-            content << node.loc.end.source
-            # steep:ignore:end
+            content << node_loc.end.source
 
             corrector.replace(node, content.join)
           end

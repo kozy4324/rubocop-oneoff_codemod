@@ -20,3 +20,6 @@ Metrics/MethodLength:
 
 Metrics/PerceivedComplexity:
   Enabled: false
+
+Layout/LeadingCommentSpace:
+  Enabled: false

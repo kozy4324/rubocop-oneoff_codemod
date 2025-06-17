@@ -8,7 +8,7 @@ sources:
 
 # You can specify local directories as sources also.
 # - type: local
-#   path: path/to/your/local/repository
+#   path: ../gem_rbs_collection
 
 # A directory to install the downloaded RBSs
 path: .gem_rbs_collection
