@@ -49,6 +49,7 @@ module RuboCop
             end
 
             node_loc = node.loc #: Parser::Source::Map::Collection
+            next if node_loc.begin.nil? || node_loc.end.nil?
 
             # @type var content: Array[String]
             content = []

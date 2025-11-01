@@ -6,7 +6,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: diff-lcs
@@ -14,7 +14,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: fileutils
@@ -46,7 +46,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: parser
@@ -54,7 +54,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: pathname
@@ -70,7 +70,7 @@ gems:
   source:
     type: stdlib
 - name: prism
-  version: 1.4.0
+  version: 1.6.0
   source:
     type: rubygems
 - name: rainbow
@@ -78,7 +78,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rake
@@ -86,11 +86,11 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rbs
-  version: 3.9.4
+  version: 3.9.5
   source:
     type: rubygems
 - name: rdoc
@@ -102,7 +102,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop
@@ -110,15 +110,15 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop-ast
-  version: '1.30'
+  version: '1.46'
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 4ef0627c3332a39419dd53feb222a904a9e00cd0
+    revision: 04ed82d7df5d5ee825d7864abfa29d624b52e549
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: tsort
