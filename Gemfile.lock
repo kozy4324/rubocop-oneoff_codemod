@@ -31,7 +31,7 @@ GEM
     date (3.5.1)
     diff-lcs (1.6.2)
     drb (2.2.3)
-    erb (6.0.0)
+    erb (6.0.1)
     ffi (1.17.2)
     ffi (1.17.2-arm64-darwin)
     fileutils (1.8.0)
