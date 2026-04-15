@@ -1,7 +1,4 @@
 module LintRoller
-  module Plugin
-  end
-
   class About
     def initialize: (untyped) -> void
   end
