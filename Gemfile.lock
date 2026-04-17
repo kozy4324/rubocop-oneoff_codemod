@@ -14,7 +14,7 @@ GEM
     csv (3.3.5)
     date (3.5.1)
     diff-lcs (1.6.2)
-    erb (6.0.2)
+    erb (6.0.3)
     ffi (1.17.4)
     ffi (1.17.4-arm64-darwin)
     fileutils (1.8.0)
@@ -45,7 +45,7 @@ GEM
       stringio
     racc (1.8.1)
     rainbow (3.1.1)
-    rake (13.4.1)
+    rake (13.4.2)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
